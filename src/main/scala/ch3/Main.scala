@@ -45,6 +45,13 @@ object List {
     case Nil => throw new IllegalArgumentException
     case Cons(_, t) => Cons(x, t)
   }
+
+  // 3.4
+  def drop[A](xs: List[A], n: Int):List[A] =
+    if (n <= 0)
+      xs
+    else
+      drop(tail(xs), n - 1)
 }
 
 object Main extends App {
@@ -59,4 +66,8 @@ object Main extends App {
   // 3.3 test
   // Cons(4,Cons(2,Cons(1,Nil)))
   println(List.setHead(Cons(3,Cons(2,Cons(1,Nil))), 4))
+
+  // 3.4 test
+  // Cons(2,Cons(1,Nil))
+  println(List.drop(Cons(4,Cons(3,Cons(2,Cons(1,Nil)))), 2))
 }
