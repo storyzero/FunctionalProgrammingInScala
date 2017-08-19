@@ -52,6 +52,12 @@ object List {
       xs
     else
       drop(tail(xs), n - 1)
+
+  // 3.5
+  def dropWhile[A](xs: List[A], f: A => Boolean): List[A] = xs match {
+    case Cons(h, t) if (f(h)) => dropWhile(t, f)
+    case _ => xs
+  }
 }
 
 object Main extends App {
@@ -70,4 +76,8 @@ object Main extends App {
   // 3.4 test
   // Cons(2,Cons(1,Nil))
   println(List.drop(Cons(4,Cons(3,Cons(2,Cons(1,Nil)))), 2))
+
+  // 3.5 test
+  // Cons(2,Cons(1,Nil))
+  println(List.dropWhile(Cons(4,Cons(3,Cons(2,Cons(1,Nil)))), (n: Int) =>  (n > 2)))
 }
