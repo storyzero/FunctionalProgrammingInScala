@@ -34,12 +34,19 @@ object List {
     case _ => 101
   }
 
-  println(x)
+  // 3.2
+  def tail[A](xs: List[A]): List[A] = xs match {
+    case Nil => throw new IllegalArgumentException
+    case Cons(_, t) => t
+  }
 }
 
-class Main {
-
-  // 3.1
-
-  // 3.2
+object Main extends App {
+   // 3.2 test
+   // Nil
+   println(List.tail(Cons(1, Nil)))
+  // IAE
+  println(List.tail(Nil))
+  // MPE
+  println(List.tail(null))
 }
