@@ -39,14 +39,24 @@ object List {
     case Nil => throw new IllegalArgumentException
     case Cons(_, t) => t
   }
+  
+  // 3.3
+  def setHead[A](xs: List[A], x: A) = xs match {
+    case Nil => throw new IllegalArgumentException
+    case Cons(_, t) => Cons(x, t)
+  }
 }
 
 object Main extends App {
-   // 3.2 test
-   // Nil
-   println(List.tail(Cons(1, Nil)))
+  // 3.2 test
+  // Nil
+  println(List.tail(Cons(1, Nil)))
   // IAE
-  println(List.tail(Nil))
+  // println(List.tail(Nil))
   // MPE
-  println(List.tail(null))
+  // println(List.tail(null))
+
+  // 3.3 test
+  // Cons(4,Cons(2,Cons(1,Nil)))
+  println(List.setHead(Cons(3,Cons(2,Cons(1,Nil))), 4))
 }
